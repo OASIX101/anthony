@@ -1,0 +1,62 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <hr>
+
+    <h3 class="title">▪️ {{ post.title | capfirst }}</h3>
+ 
+    <div class="card text-bg-danger mb-3" style="max-width: auto;">
+        <div class="card-header">Posted at: {{ post.created }}</div>
+        <div class="card-body">
+          <p class="card-text">{{ post.body }}</p>
+        </div>
+      </div>
+
+    <hr>
+    <h5>▪️ COMMENT SECTION </h5>
+    <hr>
+
+    <h2 class="subtitle"></h2>
+    
+    {% for comment in post.comments.all %}
+        <article>
+            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Posted at: {{ comment.date_added }}</div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ comment.name }}'s comment</h5>
+                  <p class="card-text"><i class="bi bi-body-text">{{ comment.body }}</i></p>
+                </div>
+            </div>
+        </article>
+        {% empty %}
+        <div class="notification">
+            <p><i class="bi bi-body-text">No comments yet!</i></p>
+        </div>
+        {% endfor %}
+    <hr>
+
+
+    <h5 class="subtitle">▪️ ADD COMMENT</h5>
+
+    <form method="post" action="." class="col-md-6 col-lg-5">
+        <!-- xs--extra small
+        sm-- small
+        md-- medium
+        lg-- larger -->
+        
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <div class="field ">
+            
+            <div class="control">
+                <button class="btn btn-danger"><i class="bi bi-body-text">Submit</i></button></a>
+            </div>
+        </div>
+    </form> 
+    
+    <hr>
+
+    
+{% endblock %}l

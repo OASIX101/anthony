@@ -1,0 +1,53 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+
+    
+    <hr>
+    <div class="card text-bg-light mb-3" style="max-width: auto"><div class="shadow p-3 mb-5 bg-body rounded">
+
+        <h6><div class="card-header">------   Written by Prof. {{ post.author | capfirst }} & Posted at {{ post.created }}   ------</div></h6>
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title | capfirst }}</h5>
+          <p class="card-text">{{ post.body | truncatewords:10 }}</p>
+ 
+        </div>
+      </div>
+   
+
+    </div>
+        <div class="post block">
+            <h2 class="subtitle"></h2>
+        
+            <big></big>
+
+            <p></p>
+
+           <a href="{% url  'post_detail' post.slug %}">
+            <button type="button" class="btn btn-danger"><i class="bi bi-body-text">📚 Read more</i></button></a>
+        </div>
+ 
+    {% empty %}
+    <hr>
+      <div class="notification">
+        <p><i class="bi bi-body-text">No posts yet!</i></p>
+      </div>
+
+    {% endfor %}  
+    <hr>
+    <div class="card" style="width: 25rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="btn btn-light">
+    <h5 class="card-title" >------   Credits   ------</h5>
+    <hr>
+    <p class="card-text">This project was created with the use of django. Tap the read more button to learn more about django.
+      <p></p> </p>
+  </div>
+</div>
+<p></p>
+<a href="https://docs.djangoproject.com/en/4.1/" class="btn btn-danger"><i class="bi bi-body-text">📚 Read more</a></i>
+
+
+    
+{% endblock %}

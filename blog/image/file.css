@@ -1,0 +1,19 @@
+body{
+    background: grey;
+    background-repeat : no-repeat;
+    color: #fff;
+}
+
+body*{
+    font-family: Ubuntu;
+}
+
+img{
+    width: 300px;
+    height: 300px;
+}
+
+a,a:hover, a:visited{
+    color:#fff;
+    text-decoration: none;
+}
